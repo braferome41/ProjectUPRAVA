@@ -1,0 +1,13 @@
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.csprojResolveAssemblyReference.cache
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.frmCliente.resources
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Properties.Resources.resources
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.csproj.GenerateResource.cache
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.csproj.CoreCompileInputs.cache
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\bin\Debug\ProyectoUprava.exe.config
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\bin\Debug\ProyectoUprava.exe
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\bin\Debug\ProyectoUprava.pdb
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.exe
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.pdb
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmVehiculo.resources
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.Login.resources
+C:\Users\rojas\source\repos\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmEmpleado.resources
