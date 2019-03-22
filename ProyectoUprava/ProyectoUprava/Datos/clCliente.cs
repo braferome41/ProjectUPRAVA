@@ -16,6 +16,8 @@ namespace ProyectoUprava.Datos
         public string Email { get; set; }
         public string Celular { get; set; }
 
+        List<clCliente> verificarelimin = new List<clCliente>();
+
         public DataTable mtdListarClinte()
         {
             clConexion objConexion = new clConexion();
@@ -84,6 +86,23 @@ namespace ProyectoUprava.Datos
             }
 
             return documento;
+        }
+
+        public List<clCliente> mtdVerificarEliminacion()
+        {
+            clConexion objconexion = new clConexion();
+            string consulta = "SELECT Documento FROM Cliente";
+            DataTable dtCliente = objconexion.mtdDesconectdo(consulta);
+
+            for (int i = 0; i < dtCliente.Rows.Count; i++)
+            {
+                clCliente objCliente = new clCliente();
+
+                objCliente.Documento = dtCliente.Rows[i]["Documento"].ToString();
+                verificarelimin.Add(objCliente);
+            }
+
+            return verificarelimin;
         }
     }
 }

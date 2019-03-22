@@ -20,6 +20,8 @@ namespace ProyectoUprava
             InitializeComponent();
         }
 
+        bool retorno;
+
         public void mtdLimpiar()
         {
             txtDocumento.Clear();
@@ -173,21 +175,36 @@ namespace ProyectoUprava
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            clCliente objCliente = new clCliente();
+
+            List<clCliente> ListaDatos = new List<clCliente>();
+            ListaDatos = objCliente.mtdVerificarEliminacion();           
+
             if (txtBusDoc.Text == "")
             {
                 MessageBox.Show("Debe Completar la Informacion");
             }
             else
-            {
-                clCliente objCliente = new clCliente();
-                objCliente.Documento = txtBusDoc.Text;
+            {                
+                for (int i = 0; i < ListaDatos.Count; i++)
+                {
+                    if (ListaDatos[i].Documento == txtBusDoc.Text)
+                    {
+                        objCliente.Documento = txtBusDoc.Text;
+                        DataTable buscarcliente = objCliente.mtdBuscarCliente();
+                        dgvCliente.DataSource = buscarcliente;
+                        txtBusDoc.Clear();
+                        txtBusDoc.Focus();
+                        retorno = true;
+                    }                    
+                }
 
-                DataTable buscarcliente = objCliente.mtdBuscarCliente();
-                dgvCliente.DataSource = buscarcliente;
-                txtBusDoc.Clear();
-                txtBusDoc.Focus();
-            }
-
+                if (retorno!=true)
+                {
+                    MessageBox.Show("El CLinete no se Encunetra Registrado en la Basa de Datos");
+                }
+            }  
+            
         }
 
         private void btnListarAll_Click(object sender, EventArgs e)
