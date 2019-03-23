@@ -88,7 +88,7 @@ namespace ProyectoUprava.Datos
             return documento;
         }
 
-        public List<clCliente> mtdVerificarEliminacion()
+        public List<clCliente> mtdVerificarEliminacionBusqueda()
         {
             clConexion objconexion = new clConexion();
             string consulta = "SELECT Documento FROM Cliente";

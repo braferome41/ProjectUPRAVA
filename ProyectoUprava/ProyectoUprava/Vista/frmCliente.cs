@@ -20,7 +20,7 @@ namespace ProyectoUprava
             InitializeComponent();
         }
 
-        bool retorno;
+        bool retorno1;
 
         public void mtdLimpiar()
         {
@@ -144,6 +144,11 @@ namespace ProyectoUprava
 
         private void btnElimClient_Click(object sender, EventArgs e)
         {
+            clCliente objCliente = new clCliente();
+
+            List<clCliente> ListaDatos = new List<clCliente>();
+            ListaDatos = objCliente.mtdVerificarEliminacionBusqueda();
+
             if (txtDocElim.Text == "")
             {
                 MessageBox.Show("Debe Completar la Informacion");
@@ -151,24 +156,37 @@ namespace ProyectoUprava
             }
 
             else
-            {
-                clCliente objCliente = new clCliente();
-                objCliente.Documento = txtDocElim.Text;
-
-                int retorno = objCliente.mtdEliminarCliente();
-
-                if (retorno > 0)
+            {               
+                for (int i = 0; i < ListaDatos.Count; i++)
                 {
-                    MessageBox.Show("Eliminacion Completada");
-                    txtDocElim.Clear();
-                    txtDocElim.Focus();
-                    
-                    DataTable Cliente = objCliente.mtdListarClinte();
-                    dgvCliente.DataSource = Cliente;
+                    retorno1 = false;
+
+                    if (ListaDatos[i].Documento == txtDocElim.Text)
+                    {
+                        objCliente.Documento = txtDocElim.Text;
+                        int retorno = objCliente.mtdEliminarCliente();
+
+                        if (retorno > 0)
+                        {
+                            MessageBox.Show("Eliminacion Completada");
+                            txtDocElim.Clear();
+                            txtDocElim.Focus();
+
+                            DataTable Cliente = objCliente.mtdListarClinte();
+                            dgvCliente.DataSource = Cliente;
+
+                            retorno1 = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un Error al Eliminar");
+                        }
+                    }                   
                 }
-                else
+
+                if (retorno1 != true)
                 {
-                    MessageBox.Show("Error al Eliminar");
+                    MessageBox.Show("El Cliente no se Encuentra Registrado en la Base de Datos");                    
                 }
             }
         }
@@ -178,7 +196,7 @@ namespace ProyectoUprava
             clCliente objCliente = new clCliente();
 
             List<clCliente> ListaDatos = new List<clCliente>();
-            ListaDatos = objCliente.mtdVerificarEliminacion();           
+            ListaDatos = objCliente.mtdVerificarEliminacionBusqueda();           
 
             if (txtBusDoc.Text == "")
             {
@@ -188,6 +206,8 @@ namespace ProyectoUprava
             {                
                 for (int i = 0; i < ListaDatos.Count; i++)
                 {
+                    retorno1 = false;
+
                     if (ListaDatos[i].Documento == txtBusDoc.Text)
                     {
                         objCliente.Documento = txtBusDoc.Text;
@@ -195,13 +215,13 @@ namespace ProyectoUprava
                         dgvCliente.DataSource = buscarcliente;
                         txtBusDoc.Clear();
                         txtBusDoc.Focus();
-                        retorno = true;
+                        retorno1 = true;
                     }                    
                 }
 
-                if (retorno!=true)
+                if (retorno1!=true)
                 {
-                    MessageBox.Show("El CLinete no se Encunetra Registrado en la Basa de Datos");
+                    MessageBox.Show("El Cliente no se Encuentra Registrado en la Base de Datos");
                 }
             }  
             
