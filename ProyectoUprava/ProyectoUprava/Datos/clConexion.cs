@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace ProyectoUprava.Datos
 {
@@ -32,19 +33,29 @@ namespace ProyectoUprava.Datos
             {
                 string error = err.Message;
                 return 0;
-            }           
+            }
         }
 
         public DataTable mtdDesconectdo(string consulta)
         {
-            SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
-            DataTable dtDatos = new DataTable();
-            adaptador.Fill(dtDatos);
-            conexion.Close();
+            try
+            {
+                SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                DataTable dtDatos = new DataTable();
+                adaptador.Fill(dtDatos);
+                conexion.Close();
 
-            return dtDatos;
+                return dtDatos;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un error en la Conexion con la Base de Datos");
+                DataTable objretorno = new DataTable();
+                return objretorno;
+            }
+
         }
     }
 }
-    
+
 

@@ -78,6 +78,24 @@ namespace ProyectoUprava.Datos
 
             return retorno;
         }
+
+        public int mtdVerificarVehculo()
+        {
+            clConexion objconexion = new clConexion();
+            string consulta = "SELECT IdCliente FROM Vehiculo WHERE IdCliente='"+IdCliente+"'";
+            DataTable idClienteVehi = objconexion.mtdDesconectdo(consulta);
+
+            int id = 0;
+
+            for (int i = 0; i < idClienteVehi.Rows.Count; i++)
+            {
+                clVehiculo objVehiculo = new clVehiculo();
+
+                id = Convert.ToInt32(idClienteVehi.Rows[i]["IdCliente"]);
+            }
+
+            return id;
+        }
         
     }
 }

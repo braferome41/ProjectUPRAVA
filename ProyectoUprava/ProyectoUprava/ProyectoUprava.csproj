@@ -55,7 +55,13 @@
     <Compile Include="Datos\clConexion.cs" />
     <Compile Include="Datos\clEmpleado.cs" />
     <Compile Include="Datos\clLogin.cs" />
+    <Compile Include="Datos\clProducto.cs" />
     <Compile Include="Datos\clVehiculo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,11 +70,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\frmContenidoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\frmContenidoMenu.Designer.cs">
+      <DependentUpon>frmContenidoMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\frmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vista\frmEmpleado.Designer.cs">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\frmMenuRecep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\frmMenuRecep.Designer.cs">
+      <DependentUpon>frmMenuRecep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\frmProducto.Designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\frmVehiculo.cs">
       <SubType>Form</SubType>
@@ -87,15 +111,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Vista\frmContenidoMenu.resx">
+      <DependentUpon>frmContenidoMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\frmEmpleado.resx">
       <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\frmMenuRecep.resx">
+      <DependentUpon>frmMenuRecep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\frmVehiculo.resx">
       <DependentUpon>frmVehiculo.cs</DependentUpon>
@@ -127,6 +156,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Fondo31.png" />
+    <None Include="Resources\United_Kingdom-wallpaper-10200023.jpg" />
+    <None Include="Resources\Fondo3.png" />
+    <Content Include="Vista\Imagenes\1.jpg" />
+    <Content Include="Vista\Imagenes\2.jpg" />
+    <Content Include="Vista\Imagenes\3.jpg" />
+    <Content Include="Vista\Imagenes\4.jpg" />
+    <Content Include="Vista\Imagenes\Fondo1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

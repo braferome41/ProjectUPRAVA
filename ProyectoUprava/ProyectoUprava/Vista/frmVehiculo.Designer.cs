@@ -46,8 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.gbxRegistro = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnListarVehiculos = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnListarVehiculos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculo)).BeginInit();
             this.gbxRegistro.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -230,15 +230,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Eliminar";
             // 
-            // btnListarVehiculos
-            // 
-            this.btnListarVehiculos.Location = new System.Drawing.Point(271, 247);
-            this.btnListarVehiculos.Name = "btnListarVehiculos";
-            this.btnListarVehiculos.Size = new System.Drawing.Size(208, 37);
-            this.btnListarVehiculos.TabIndex = 26;
-            this.btnListarVehiculos.Text = "ListarVehiculos";
-            this.btnListarVehiculos.UseVisualStyleBackColor = true;
-            // 
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(142, 141);
@@ -248,6 +239,16 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnListarVehiculos
+            // 
+            this.btnListarVehiculos.Location = new System.Drawing.Point(271, 247);
+            this.btnListarVehiculos.Name = "btnListarVehiculos";
+            this.btnListarVehiculos.Size = new System.Drawing.Size(208, 37);
+            this.btnListarVehiculos.TabIndex = 26;
+            this.btnListarVehiculos.Text = "ListarVehiculos";
+            this.btnListarVehiculos.UseVisualStyleBackColor = true;
+            this.btnListarVehiculos.Click += new System.EventHandler(this.btnListarVehiculos_Click);
             // 
             // frmVehiculo
             // 

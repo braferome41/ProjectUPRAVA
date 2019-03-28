@@ -18,7 +18,7 @@ namespace ProyectoUprava.Vista
         {
             InitializeComponent();
         }
-        
+
         private void frmVehiculo_Load(object sender, EventArgs e)
         {
             clVehiculo objVehiculo = new clVehiculo();
@@ -57,26 +57,82 @@ namespace ProyectoUprava.Vista
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            clVehiculo objvehiculo = new clVehiculo();
+            if (txtElimPlac.Text=="")
+            {
+                MessageBox.Show("Debe Completar la Informacion");
+            }
+            else
+            {
+                clVehiculo objvehiculo = new clVehiculo();
 
-            objvehiculo.Placa = txtElimPlac.Text;
+                objvehiculo.Placa = txtElimPlac.Text;
 
-            DataTable dtBuscVehiculo = objvehiculo.mtdBuscarVehiculo();
-            dgvVehiculo.DataSource = dtBuscVehiculo;
+                DataTable dtBuscVehiculo = objvehiculo.mtdBuscarVehiculo();
+                dgvVehiculo.DataSource = dtBuscVehiculo;
 
-            txtElimPlac.Clear();
-            txtElimPlac.Focus();
-        }        
+                txtElimPlac.Clear();
+                txtElimPlac.Focus();
+            }            
+        }
 
         private void btnRegisVehi_Click(object sender, EventArgs e)
         {
-            if (txtDocRegis.Text==""||txtTipo.Text==""||txtMarca.Text==""||txtPlaca.Text=="")
+            if (txtDocRegis.Text == "" || txtTipo.Text == "" || txtMarca.Text == "" || txtPlaca.Text == "")
             {
                 MessageBox.Show("Debe Completar la Informacion");
             }
             else
             {
                 clVehiculo objVehiculo = new clVehiculo();
+                objVehiculo.Documento = txtDocRegis.Text;
+                int id = objVehiculo.mtdBuscarId();
+                objVehiculo.IdCliente = id;
+                int retornoid = objVehiculo.mtdVerificarVehculo();
+
+                if (retornoid == id)
+                {
+                    MessageBox.Show("El Cliente ya tiene Registrado un Vehiculo");
+                }
+                else
+                {
+                    objVehiculo.IdCliente = id;
+                    objVehiculo.Marca = txtMarca.Text;
+                    objVehiculo.Tipo = txtTipo.Text;
+                    objVehiculo.Placa = txtPlaca.Text;
+
+                    int retorno = objVehiculo.mtdRegistrarVehiculo();
+
+                    if (retorno > 0)
+                    {
+                        MessageBox.Show("Registro Completado");
+                        txtTipo.Clear();
+                        txtMarca.Clear();
+                        txtPlaca.Clear();
+                        txtDocRegis.Clear();
+                        txtDocRegis.Focus();
+
+                        frmVehiculo_Load(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Registrar");
+                    }
+                }
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (txtDocRegis.Text==""||txtTipo.Text==""||txtMarca.Text==""||txtTipo.Text=="")
+            {
+                MessageBox.Show("Debe Completar la Informacion");
+            }
+            else
+            {
+
+                clVehiculo objVehiculo = new clVehiculo();
+
+
                 objVehiculo.Documento = txtDocRegis.Text;
 
                 int id = objVehiculo.mtdBuscarId();
@@ -86,11 +142,11 @@ namespace ProyectoUprava.Vista
                 objVehiculo.Tipo = txtTipo.Text;
                 objVehiculo.Placa = txtPlaca.Text;
 
-                int retorno = objVehiculo.mtdRegistrarVehiculo();
+                int retorno = objVehiculo.mtdActualizarVehiculo();
 
                 if (retorno > 0)
                 {
-                    MessageBox.Show("Registro Completado");
+                    MessageBox.Show("Actualizacion Completada");
                     txtTipo.Clear();
                     txtMarca.Clear();
                     txtPlaca.Clear();
@@ -101,40 +157,14 @@ namespace ProyectoUprava.Vista
                 }
                 else
                 {
-                    MessageBox.Show("Error al Registrar");
+                    MessageBox.Show("Error al Actualizar");
                 }
             }            
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void btnListarVehiculos_Click(object sender, EventArgs e)
         {
-            clVehiculo objVehiculo = new clVehiculo();
-            objVehiculo.Documento = txtDocRegis.Text;
-
-            int id = objVehiculo.mtdBuscarId();
-
-            objVehiculo.IdCliente = id;
-            objVehiculo.Marca = txtMarca.Text;
-            objVehiculo.Tipo = txtTipo.Text;
-            objVehiculo.Placa = txtPlaca.Text;
-
-            int retorno = objVehiculo.mtdActualizarVehiculo();
-
-            if (retorno > 0)
-            {
-                MessageBox.Show("Actualizacion Completada");
-                txtTipo.Clear();
-                txtMarca.Clear();
-                txtPlaca.Clear();
-                txtDocRegis.Clear();
-                txtDocRegis.Focus();
-
-                frmVehiculo_Load(null, null);
-            }
-            else
-            {
-                MessageBox.Show("Error al Actualizar");
-            }
+            frmVehiculo_Load(null, null);
         }
     }
 }

@@ -42,6 +42,55 @@ namespace ProyectoUprava.Vista
             {
                 objLogin.Documento = int.Parse(txtDocumento.Text);
                 objLogin.Contraseña = txtContraseña.Text;
+                string mensaje = "";
+
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    if (lista[i].Documento == objLogin.Documento && lista[i].Contraseña == objLogin.Contraseña && lista[i].Cargo == "Administrador")
+                    {
+
+                        mensaje = "Bienvenido Administrador";
+
+                        break;
+
+                    }
+
+                    else if (lista[i].Documento == objLogin.Documento && lista[i].Contraseña == objLogin.Contraseña && lista[i].Cargo == "Recepcion")
+                    {
+                        mensaje = "Bienvenido Recepcionista";
+                        break;
+
+                    }
+
+                    else
+                    {
+                        mensaje = "Usuario no registrado"
+                            + " en la Base de Datos";
+
+                    }
+
+                }
+
+                MessageBox.Show(mensaje);
+                frmEmpleado objAdmin = new frmEmpleado();
+                frmMenuRecep objRecepcion = new frmMenuRecep();
+
+                if (mensaje == "Bienvenido Administrador")
+                {
+                    objAdmin.Show();
+                    this.Hide();
+                }
+                else if (mensaje == "Bienvenido Recepcionista")
+                {
+                    objRecepcion.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    txtDocumento.Clear();
+                    txtContraseña.Clear();
+                    txtDocumento.Focus();
+                }
             }
             catch (Exception)
             {
@@ -50,55 +99,7 @@ namespace ProyectoUprava.Vista
             }
             
 
-            string mensaje = "";
-
-            for (int i = 0; i < lista.Count; i++)
-            {
-                if (lista[i].Documento == objLogin.Documento && lista[i].Contraseña == objLogin.Contraseña && lista[i].Cargo == "Administrador")
-                {
-
-                    mensaje = "Bienvenido Administrador";
-
-                    break;
-
-                }
-
-                else if (lista[i].Documento == objLogin.Documento && lista[i].Contraseña == objLogin.Contraseña && lista[i].Cargo == "Recepcion")
-                {
-                    mensaje = "Bienvenido Recepcionista";
-                    break;
-
-                }
-
-                else
-                {
-                    mensaje = "Usuario no registrado"
-                        +" en la Base de Datos";
-
-                }
-
-            }
-
-            MessageBox.Show(mensaje);
-            frmCliente objAdmin = new frmCliente();
-            frmCliente objRecepcion = new frmCliente();
-
-            if (mensaje == "Bienvenido Administrador")
-            {
-                objAdmin.Show();
-                this.Hide();
-            }
-            else if (mensaje == "Bienvenido Recepcionista")
-            {
-                objRecepcion.Show();
-                this.Hide();
-            }
-            else
-            {
-                txtDocumento.Clear();
-                txtContraseña.Clear();
-                txtDocumento.Focus();
-            }
+            
 
         }
 
@@ -132,6 +133,11 @@ namespace ProyectoUprava.Vista
                 e.Handled = true;
                 MessageBox.Show("Digitar solo numeros");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

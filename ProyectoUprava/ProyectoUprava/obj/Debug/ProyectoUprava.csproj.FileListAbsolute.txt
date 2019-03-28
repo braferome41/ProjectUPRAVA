@@ -24,3 +24,6 @@ C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUpr
 C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.csproj.CoreCompileInputs.cache
 C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.exe
 C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.pdb
+C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmProducto.resources
+C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmMenuRecep.resources
+C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmContenidoMenu.resources

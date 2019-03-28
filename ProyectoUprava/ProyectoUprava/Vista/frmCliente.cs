@@ -21,6 +21,7 @@ namespace ProyectoUprava
         }
 
         bool retorno1;
+       
 
         public void mtdLimpiar()
         {
@@ -84,6 +85,7 @@ namespace ProyectoUprava
             clCliente objCliente = new clCliente();
             DataTable Cliente = objCliente.mtdListarClinte();
             dgvCliente.DataSource = Cliente;
+             
 
             //Cargar Combos
 
@@ -97,9 +99,9 @@ namespace ProyectoUprava
             }
             catch (Exception err)
             {
-                string error = err.Message;    
-                
-            }            
+                string error = err.Message;
+
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -125,7 +127,7 @@ namespace ProyectoUprava
                 {
                     MessageBox.Show("Actualizacion Exitosa");
                     mtdLimpiar();
-                    
+
                     DataTable Cliente = objCliente.mtdListarClinte();
                     dgvCliente.DataSource = Cliente;
                 }
@@ -156,7 +158,7 @@ namespace ProyectoUprava
             }
 
             else
-            {               
+            {
                 for (int i = 0; i < ListaDatos.Count; i++)
                 {
                     retorno1 = false;
@@ -181,12 +183,12 @@ namespace ProyectoUprava
                         {
                             MessageBox.Show("Ocurrio un Error al Eliminar");
                         }
-                    }                   
+                    }
                 }
 
                 if (retorno1 != true)
                 {
-                    MessageBox.Show("El Cliente no se Encuentra Registrado en la Base de Datos");                    
+                    MessageBox.Show("El Cliente no se Encuentra Registrado en la Base de Datos");
                 }
             }
         }
@@ -196,35 +198,36 @@ namespace ProyectoUprava
             clCliente objCliente = new clCliente();
 
             List<clCliente> ListaDatos = new List<clCliente>();
-            ListaDatos = objCliente.mtdVerificarEliminacionBusqueda();           
+            ListaDatos = objCliente.mtdVerificarEliminacionBusqueda();
 
             if (txtBusDoc.Text == "")
             {
                 MessageBox.Show("Debe Completar la Informacion");
             }
             else
-            {                
+            {
                 for (int i = 0; i < ListaDatos.Count; i++)
                 {
-                    retorno1 = false;
-
                     if (ListaDatos[i].Documento == txtBusDoc.Text)
                     {
+                        retorno1 = false;
                         objCliente.Documento = txtBusDoc.Text;
                         DataTable buscarcliente = objCliente.mtdBuscarCliente();
                         dgvCliente.DataSource = buscarcliente;
                         txtBusDoc.Clear();
                         txtBusDoc.Focus();
                         retorno1 = true;
-                    }                    
+                    }
                 }
 
-                if (retorno1!=true)
+                if (retorno1 != true)
                 {
                     MessageBox.Show("El Cliente no se Encuentra Registrado en la Base de Datos");
+                    txtBusDoc.Clear();
+                    txtBusDoc.Focus();
                 }
-            }  
-            
+            }
+
         }
 
         private void btnListarAll_Click(object sender, EventArgs e)
@@ -254,5 +257,19 @@ namespace ProyectoUprava
                 MessageBox.Show("Digitar solo numeros");
             }
         }
+
+        private void FechaHora_Tick(object sender, EventArgs e)
+        {
+            lblFecha.Text = DateTime.Now.ToLongTimeString();
+            lblHora.Text = DateTime.Now.ToLongDateString();
+        }       
+
+        private void button1_Click(object sender, EventArgs e)
+        {            
+            Close();
+        }
+
+       
     }
 }
+ 
