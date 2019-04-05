@@ -17,7 +17,7 @@ namespace ProyectoUprava
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmVehiculo());
+            Application.Run(new frmEmpleado());
         }
     }
 }

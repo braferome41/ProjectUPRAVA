@@ -73,7 +73,7 @@ namespace ProyectoUprava.Datos
         public int mtdActualizarVehiculo()
         {
             clConexion objconexion = new clConexion();
-            string consulta = "UPDATE Vehiculo SET Tipo='"+Tipo+"',Marca='"+Marca+"',Placa='"+IdCliente+"' WHERE Placa='"+Placa+"'";
+            string consulta = "UPDATE Vehiculo SET Tipo='"+Tipo+"',Marca='"+Marca+"',Placa='"+Placa+"' WHERE Placa='"+Placa+"'";
             int retorno = objconexion.mtdConectado(consulta);
 
             return retorno;
@@ -95,6 +95,42 @@ namespace ProyectoUprava.Datos
             }
 
             return id;
+        }
+
+        public string mtdVerificarPlaca()
+        {
+            clConexion objconexion = new clConexion();
+            string consulta="SELECT Placa FROM Vehiculo WHERE Placa='"+Placa+"'";
+            DataTable dtPlaca = objconexion.mtdDesconectdo(consulta);
+
+            string placa="";
+
+            for (int i = 0; i < dtPlaca.Rows.Count; i++)
+            {
+                clVehiculo objVehiculo = new clVehiculo();
+
+                placa = dtPlaca.Rows[i]["Placa"].ToString();
+            }
+
+            return placa;
+        }
+
+        public string mtdVerBuscPlaca()
+        {
+            clConexion objconexion = new clConexion();
+            string consulta = "SELECT Placa FROM Vehiculo WHERE Placa = '" + Placa + "'";
+            DataTable dtPlaca = objconexion.mtdDesconectdo(consulta);
+
+            string placa = "";
+
+            for (int i = 0; i < dtPlaca.Rows.Count ; i++)
+            {
+                clVehiculo objVehiculo = new clVehiculo();
+
+                placa = dtPlaca.Rows[i]["Placa"].ToString();
+            }
+
+            return placa;
         }
         
     }

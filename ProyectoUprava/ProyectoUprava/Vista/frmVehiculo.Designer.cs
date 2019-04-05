@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvVehiculo = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehiculo));
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
@@ -48,18 +48,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnListarVehiculos = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculo)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbxRegistro.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvVehiculo
-            // 
-            this.dgvVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVehiculo.Location = new System.Drawing.Point(23, 290);
-            this.dgvVehiculo.Name = "dgvVehiculo";
-            this.dgvVehiculo.Size = new System.Drawing.Size(693, 212);
-            this.dgvVehiculo.TabIndex = 0;
             // 
             // txtPlaca
             // 
@@ -128,6 +122,7 @@
             this.txtDocRegis.Name = "txtDocRegis";
             this.txtDocRegis.Size = new System.Drawing.Size(151, 26);
             this.txtDocRegis.TabIndex = 18;
+            this.txtDocRegis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocRegis_KeyPress);
             // 
             // btnRegisVehi
             // 
@@ -198,6 +193,7 @@
             // 
             // gbxRegistro
             // 
+            this.gbxRegistro.BackColor = System.Drawing.Color.White;
             this.gbxRegistro.Controls.Add(this.btnActualizar);
             this.gbxRegistro.Controls.Add(this.txtPlaca);
             this.gbxRegistro.Controls.Add(this.label14);
@@ -209,7 +205,7 @@
             this.gbxRegistro.Controls.Add(this.btnRegisVehi);
             this.gbxRegistro.Controls.Add(this.label12);
             this.gbxRegistro.Controls.Add(this.txtDocRegis);
-            this.gbxRegistro.Location = new System.Drawing.Point(11, 14);
+            this.gbxRegistro.Location = new System.Drawing.Point(73, 12);
             this.gbxRegistro.Name = "gbxRegistro";
             this.gbxRegistro.Size = new System.Drawing.Size(426, 217);
             this.gbxRegistro.TabIndex = 35;
@@ -218,12 +214,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Controls.Add(this.txtElimPlac);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(445, 14);
+            this.groupBox2.Location = new System.Drawing.Point(505, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(270, 217);
             this.groupBox2.TabIndex = 36;
@@ -242,41 +239,63 @@
             // 
             // btnListarVehiculos
             // 
-            this.btnListarVehiculos.Location = new System.Drawing.Point(271, 247);
+            this.btnListarVehiculos.Location = new System.Drawing.Point(377, 235);
             this.btnListarVehiculos.Name = "btnListarVehiculos";
-            this.btnListarVehiculos.Size = new System.Drawing.Size(208, 37);
+            this.btnListarVehiculos.Size = new System.Drawing.Size(164, 37);
             this.btnListarVehiculos.TabIndex = 26;
             this.btnListarVehiculos.Text = "ListarVehiculos";
             this.btnListarVehiculos.UseVisualStyleBackColor = true;
             this.btnListarVehiculos.Click += new System.EventHandler(this.btnListarVehiculos_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-2, 186);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(832, 363);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(781, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 36);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 514);
+            this.ClientSize = new System.Drawing.Size(825, 514);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnListarVehiculos);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbxRegistro);
-            this.Controls.Add(this.dgvVehiculo);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmVehiculo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVehiculo";
             this.Load += new System.EventHandler(this.frmVehiculo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculo)).EndInit();
             this.gbxRegistro.ResumeLayout(false);
             this.gbxRegistro.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvVehiculo;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtMarca;
@@ -296,5 +315,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnListarVehiculos;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

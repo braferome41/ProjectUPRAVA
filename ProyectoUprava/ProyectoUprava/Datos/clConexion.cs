@@ -47,8 +47,9 @@ namespace ProyectoUprava.Datos
 
                 return dtDatos;
             }
-            catch (Exception)
+            catch (Exception err)
             {
+                string error = err.Message;
                 MessageBox.Show("Ocurrio un error en la Conexion con la Base de Datos");
                 DataTable objretorno = new DataTable();
                 return objretorno;

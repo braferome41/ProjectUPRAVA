@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoUprava.Datos;
 using System.Data.SqlClient;
+using ProyectoUprava.Vista.Listados;
 
 namespace ProyectoUprava.Vista
 {
@@ -21,9 +22,9 @@ namespace ProyectoUprava.Vista
 
         private void frmVehiculo_Load(object sender, EventArgs e)
         {
-            clVehiculo objVehiculo = new clVehiculo();
-            DataTable vehiculos = objVehiculo.mtdListarVehiculo();
-            dgvVehiculo.DataSource = vehiculos;
+            //clVehiculo objVehiculo = new clVehiculo();
+            //DataTable vehiculos = objVehiculo.mtdListarVehiculo();
+            //dgvVehiculo.DataSource = vehiculos;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -37,20 +38,29 @@ namespace ProyectoUprava.Vista
                 clVehiculo objvehiculo = new clVehiculo();
                 objvehiculo.Placa = txtElimPlac.Text;
 
-                int retorno = objvehiculo.mtdEliminarVehiculo();
+                string placa = objvehiculo.mtdVerBuscPlaca();
 
-                if (retorno > 0)
+                if (placa==txtElimPlac.Text)
                 {
-                    MessageBox.Show("Eliminacion Completada");
-                    txtElimPlac.Clear();
-                    txtElimPlac.Focus();
+                    int retorno = objvehiculo.mtdEliminarVehiculo();
 
-                    frmVehiculo_Load(null, null);
+                    if (retorno > 0)
+                    {
+                        MessageBox.Show("Eliminacion Completada");
+                        txtElimPlac.Clear();
+                        txtElimPlac.Focus();
+
+                        frmVehiculo_Load(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Eliminar");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al Eliminar");
-                }
+                    MessageBox.Show("Revise que la Placa este Escrita Correctamente");
+                }                
             }
 
         }
@@ -64,14 +74,22 @@ namespace ProyectoUprava.Vista
             else
             {
                 clVehiculo objvehiculo = new clVehiculo();
-
                 objvehiculo.Placa = txtElimPlac.Text;
 
-                DataTable dtBuscVehiculo = objvehiculo.mtdBuscarVehiculo();
-                dgvVehiculo.DataSource = dtBuscVehiculo;
+                string placa = objvehiculo.mtdVerBuscPlaca();
 
-                txtElimPlac.Clear();
-                txtElimPlac.Focus();
+                if (placa==txtElimPlac.Text)
+                {
+                    //DataTable dtBuscVehiculo = objvehiculo.mtdBuscarVehiculo();
+                    //dgvVehiculo.DataSource = dtBuscVehiculo;
+
+                    txtElimPlac.Clear();
+                    txtElimPlac.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Revise que la Placa este Escrita Correctamente");
+                }               
             }            
         }
 
@@ -89,36 +107,45 @@ namespace ProyectoUprava.Vista
                 objVehiculo.IdCliente = id;
                 int retornoid = objVehiculo.mtdVerificarVehculo();
 
-                if (retornoid == id)
+                if (id==0)
                 {
-                    MessageBox.Show("El Cliente ya tiene Registrado un Vehiculo");
+                    MessageBox.Show("El Cliente no se Encuentra Registrado");
                 }
                 else
                 {
-                    objVehiculo.IdCliente = id;
-                    objVehiculo.Marca = txtMarca.Text;
-                    objVehiculo.Tipo = txtTipo.Text;
-                    objVehiculo.Placa = txtPlaca.Text;
 
-                    int retorno = objVehiculo.mtdRegistrarVehiculo();
-
-                    if (retorno > 0)
+                    if (retornoid == id)
                     {
-                        MessageBox.Show("Registro Completado");
-                        txtTipo.Clear();
-                        txtMarca.Clear();
-                        txtPlaca.Clear();
-                        txtDocRegis.Clear();
-                        txtDocRegis.Focus();
-
-                        frmVehiculo_Load(null, null);
+                        MessageBox.Show("El Cliente ya tiene Registrado un Vehiculo");
                     }
                     else
                     {
-                        MessageBox.Show("Error al Registrar");
+                        objVehiculo.IdCliente = id;
+                        objVehiculo.Marca = txtMarca.Text;
+                        objVehiculo.Tipo = txtTipo.Text;
+                        objVehiculo.Placa = txtPlaca.Text;
+
+                        int retorno = objVehiculo.mtdRegistrarVehiculo();
+
+                        if (retorno > 0)
+                        {
+                            MessageBox.Show("Registro Completado");
+                            txtTipo.Clear();
+                            txtMarca.Clear();
+                            txtPlaca.Clear();
+                            txtDocRegis.Clear();
+                            txtDocRegis.Focus();
+
+                            frmVehiculo_Load(null, null);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al Registrar");
+                        }
                     }
                 }
             }
+
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -129,42 +156,87 @@ namespace ProyectoUprava.Vista
             }
             else
             {
-
                 clVehiculo objVehiculo = new clVehiculo();
-
-
                 objVehiculo.Documento = txtDocRegis.Text;
-
-                int id = objVehiculo.mtdBuscarId();
-
+                int id = objVehiculo.mtdBuscarId();               
                 objVehiculo.IdCliente = id;
-                objVehiculo.Marca = txtMarca.Text;
-                objVehiculo.Tipo = txtTipo.Text;
-                objVehiculo.Placa = txtPlaca.Text;
+                int retornoid = objVehiculo.mtdVerificarVehculo();
 
-                int retorno = objVehiculo.mtdActualizarVehiculo();
-
-                if (retorno > 0)
+                if (retornoid!=id || retornoid==0 || id==0)
                 {
-                    MessageBox.Show("Actualizacion Completada");
-                    txtTipo.Clear();
-                    txtMarca.Clear();
-                    txtPlaca.Clear();
-                    txtDocRegis.Clear();
-                    txtDocRegis.Focus();
-
-                    frmVehiculo_Load(null, null);
+                    MessageBox.Show("Verifique el Documento");
                 }
                 else
                 {
-                    MessageBox.Show("Error al Actualizar");
+                    objVehiculo.Placa = txtPlaca.Text;
+                    string Placa = objVehiculo.mtdVerificarPlaca();
+
+                    if (Placa==txtPlaca.Text)
+                    {
+                        objVehiculo.IdCliente = id;
+                        objVehiculo.Marca = txtMarca.Text;
+                        objVehiculo.Tipo = txtTipo.Text;
+                        objVehiculo.Placa = txtPlaca.Text;
+
+                        int retorno = objVehiculo.mtdActualizarVehiculo();
+
+                        if (retorno > 0)
+                        {
+                            MessageBox.Show("Actualizacion Completada");
+                            txtTipo.Clear();
+                            txtMarca.Clear();
+                            txtPlaca.Clear();
+                            txtDocRegis.Clear();
+                            txtDocRegis.Focus();
+
+                            frmVehiculo_Load(null, null);
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Error al Actualizar");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Revise que la Placa sea Correcta");
+                    }
+                    
                 }
+                
             }            
         }
 
         private void btnListarVehiculos_Click(object sender, EventArgs e)
         {
-            frmVehiculo_Load(null, null);
+            frmListaVehiculo objListaVeh = new frmListaVehiculo();
+            objListaVeh.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtDocRegis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Digitar solo numeros");
+            }
         }
     }
 }

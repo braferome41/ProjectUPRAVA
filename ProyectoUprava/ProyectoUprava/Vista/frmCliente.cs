@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ProyectoUprava.Datos;
 using System.Data.SqlClient;
 using ProyectoUprava.Vista;
+using ProyectoUprava.Vista.Listados;
 
 namespace ProyectoUprava
 {
@@ -69,8 +70,7 @@ namespace ProyectoUprava
                     {
                         MessageBox.Show("Registro Exitoso");
                         mtdLimpiar();
-
-                        frmCliente_Load(null, null);
+                        
                     }
                     else
                     {
@@ -82,20 +82,20 @@ namespace ProyectoUprava
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            clCliente objCliente = new clCliente();
-            DataTable Cliente = objCliente.mtdListarClinte();
-            dgvCliente.DataSource = Cliente;
+            //clCliente objCliente = new clCliente();
+            //DataTable Cliente = objCliente.mtdListarClinte();
+            //dgvCliente.DataSource = Cliente;
              
 
             //Cargar Combos
 
             try
             {
-                clCiudad objCiudad = new clCiudad();
-                DataTable dtCuidad = objCiudad.mtdCargarCiudad();
-                cbxCiudad.DataSource = dtCuidad;
-                cbxCiudad.DisplayMember = "Ciudad";
-                cbxCiudad.ValueMember = "IdCiudad";
+                //clCiudad objCiudad = new clCiudad();
+                //DataTable dtCuidad = objCiudad.mtdCargarCiudad();
+                //cbxCiudad.DataSource = dtCuidad;
+                //cbxCiudad.DisplayMember = "Ciudad";
+                //cbxCiudad.ValueMember = "IdCiudad";
             }
             catch (Exception err)
             {
@@ -127,9 +127,7 @@ namespace ProyectoUprava
                 {
                     MessageBox.Show("Actualizacion Exitosa");
                     mtdLimpiar();
-
-                    DataTable Cliente = objCliente.mtdListarClinte();
-                    dgvCliente.DataSource = Cliente;
+                                        
                 }
                 else
                 {
@@ -173,10 +171,7 @@ namespace ProyectoUprava
                             MessageBox.Show("Eliminacion Completada");
                             txtDocElim.Clear();
                             txtDocElim.Focus();
-
-                            DataTable Cliente = objCliente.mtdListarClinte();
-                            dgvCliente.DataSource = Cliente;
-
+                                                       
                             retorno1 = true;
                         }
                         else
@@ -199,6 +194,7 @@ namespace ProyectoUprava
 
             List<clCliente> ListaDatos = new List<clCliente>();
             ListaDatos = objCliente.mtdVerificarEliminacionBusqueda();
+            bool Buscar = false;
 
             if (txtBusDoc.Text == "")
             {
@@ -210,13 +206,17 @@ namespace ProyectoUprava
                 {
                     if (ListaDatos[i].Documento == txtBusDoc.Text)
                     {
-                        retorno1 = false;
-                        objCliente.Documento = txtBusDoc.Text;
-                        DataTable buscarcliente = objCliente.mtdBuscarCliente();
-                        dgvCliente.DataSource = buscarcliente;
-                        txtBusDoc.Clear();
-                        txtBusDoc.Focus();
+                        retorno1 = false;                
+
+
+                        Buscar = true;
+                        
+                        //txtBusDoc.Clear();
+                        //txtBusDoc.Focus();
                         retorno1 = true;
+                        break;
+                                              
+
                     }
                 }
 
@@ -226,15 +226,27 @@ namespace ProyectoUprava
                     txtBusDoc.Clear();
                     txtBusDoc.Focus();
                 }
+
+                frmBuscarCliente objDatos = new frmBuscarCliente();
+                objDatos.Documento = txtBusDoc.Text;
+
+
+                if (Buscar==true)
+                {                  
+                                        
+                    objDatos.Show();
+                    txtBusDoc.Clear();
+
+                }               
             }
 
         }
 
         private void btnListarAll_Click(object sender, EventArgs e)
         {
-            clCliente objCliente = new clCliente();
-            DataTable Cliente = objCliente.mtdListarClinte();
-            dgvCliente.DataSource = Cliente;
+            
+            frmDatosCliente objDatosCliente = new frmDatosCliente();
+            objDatosCliente.Show();
         }
 
         private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
@@ -269,7 +281,11 @@ namespace ProyectoUprava
             Close();
         }
 
-       
+        private void btnAsignarHab_Click(object sender, EventArgs e)
+        {
+            frmReserva objReserva = new frmReserva();
+            objReserva.Show();
+        }
     }
 }
  

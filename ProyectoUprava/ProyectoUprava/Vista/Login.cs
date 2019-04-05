@@ -64,15 +64,14 @@ namespace ProyectoUprava.Vista
 
                     else
                     {
-                        mensaje = "Usuario no registrado"
-                            + " en la Base de Datos";
+                        mensaje = "Usuario o Contraseña Incorrecta";
 
                     }
 
                 }
 
-                MessageBox.Show(mensaje);
-                frmEmpleado objAdmin = new frmEmpleado();
+                //MessageBox.Show(mensaje);
+                frmMenuEmpleado objAdmin = new frmMenuEmpleado();
                 frmMenuRecep objRecepcion = new frmMenuRecep();
 
                 if (mensaje == "Bienvenido Administrador")

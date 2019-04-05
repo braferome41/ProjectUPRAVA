@@ -9,7 +9,7 @@ namespace ProyectoUprava.Datos
 {
     class clEmpleado
     {
-        public int Documento { get; set; }
+        public string Documento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Email { get; set; }
@@ -20,38 +20,24 @@ namespace ProyectoUprava.Datos
         public string Cargo { get; set; }
         public int selecdoc { get; set; }
 
-
-        List<clEmpleado> ListaVehiculos = new List<clEmpleado>();
-
-        public List<clEmpleado> mtdListar()
+        public List<clEmpleado> mtdVerificarEliminacionBusqueda()
         {
-            clConexion objConexion = new clConexion();
+            clConexion objconexion = new clConexion();
+            List<clEmpleado> verificarelimin = new List<clEmpleado>();
 
-            DataTable dtEmpleado = new DataTable();
-
-            string consulta = "select * from Empleado";
-            dtEmpleado = objConexion.mtdDesconectdo(consulta);
+            string consulta = "SELECT Documento FROM Empleado";
+            DataTable dtEmpleado = objconexion.mtdDesconectdo(consulta);
 
             for (int i = 0; i < dtEmpleado.Rows.Count; i++)
             {
                 clEmpleado objEmpleado = new clEmpleado();
 
-                objEmpleado.Documento = int.Parse(dtEmpleado.Rows[i]["Documento"].ToString());
-                objEmpleado.Nombres = dtEmpleado.Rows[i]["Nombres"].ToString();
-                objEmpleado.Apellidos = dtEmpleado.Rows[i]["Apellidos"].ToString();
-                objEmpleado.Celular = dtEmpleado.Rows[i]["Celular"].ToString();
-                objEmpleado.Email = dtEmpleado.Rows[i]["Email"].ToString();
-                objEmpleado.Ciudad = dtEmpleado.Rows[i]["Ciudad"].ToString();
-                objEmpleado.Direccion = dtEmpleado.Rows[i]["Direccion"].ToString();
-                objEmpleado.Cargo = dtEmpleado.Rows[i]["Cargo"].ToString();
-                objEmpleado.Contraseña = dtEmpleado.Rows[i]["Contraseña"].ToString();
+                objEmpleado.Documento = dtEmpleado.Rows[i]["Documento"].ToString();
 
-                ListaVehiculos.Add(objEmpleado);
-
+                verificarelimin.Add(objEmpleado);
             }
 
-            return ListaVehiculos;
-
+            return verificarelimin;
         }
 
         public int mtdRegistrar()
@@ -79,11 +65,50 @@ namespace ProyectoUprava.Datos
         {
             clConexion objConexion = new clConexion();
 
-            string consulta = "Delete from Empleado where Documento='" + selecdoc + "'";
+            string consulta = "Delete from Empleado where Documento='" + Documento + "'";
             int borrado = objConexion.mtdConectado(consulta);
 
             return borrado;
         }
 
+        public DataTable mtdBuscarEmpleado()
+        {
+
+            clConexion objConexion = new clConexion();
+
+            string consulta = "SELECT Documento,Nombres,Apellidos,Ciudad,Email,Celular FROM Empleado WHERE Documento='" + Documento + "'";
+            DataTable dtEmpleado = objConexion.mtdDesconectdo(consulta);
+
+            return dtEmpleado;
+
+        }
+
+        public DataTable mtdListarEmpleado()
+        {
+            clConexion objConexion = new clConexion();
+
+            string consulta = "SELECT Documento,Nombres,Apellidos,Ciudad,Email,Celular FROM Empleado";
+            DataTable dtEmpleado = objConexion.mtdDesconectdo(consulta);
+
+            return dtEmpleado;
+        }
+
+        public int mtdValidar()
+        {
+            clConexion objConexion = new clConexion();
+            string consulta = "SELECT Documento FROM Empleado WHERE Documento='" + Documento + "'";
+            DataTable dtValidar = objConexion.mtdDesconectdo(consulta);
+
+            int Doc = 0;
+
+            for (int i = 0; i < dtValidar.Rows.Count; i++)
+            {
+                clEmpleado objEmpleado = new clEmpleado();
+
+                Doc = Convert.ToInt32(dtValidar.Rows[i]["Documento"]);
+            }
+
+            return Doc;
+        }
     }
 }

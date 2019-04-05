@@ -48,8 +48,7 @@
             // 
             // gbxTodo
             // 
-            this.gbxTodo.BackColor = System.Drawing.Color.Blue;
-            this.gbxTodo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbxTodo.BackgroundImage")));
+            this.gbxTodo.BackColor = System.Drawing.Color.Silver;
             this.gbxTodo.Controls.Add(this.Habitacion2);
             this.gbxTodo.Controls.Add(this.lblParqueadero);
             this.gbxTodo.Controls.Add(this.lblEslogan);

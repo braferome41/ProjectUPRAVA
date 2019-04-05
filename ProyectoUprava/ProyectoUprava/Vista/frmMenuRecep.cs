@@ -35,9 +35,17 @@ namespace ProyectoUprava.Vista
 
         private void frmMenuRecep_Load(object sender, EventArgs e)
         {
-            frmContenidoMenu objconteni = new frmContenidoMenu();
+            frmCliente objconteni = new frmCliente();
             objconteni.MdiParent = this;
             objconteni.Show();
+        }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProducto objProducto = new frmProducto();
+            objProducto.MdiParent = this;
+            objProducto.Show();
+            
         }
     }
 }

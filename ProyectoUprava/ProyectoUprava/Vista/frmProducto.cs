@@ -21,75 +21,75 @@ namespace ProyectoUprava.Vista
         private void frmProducto_Load(object sender, EventArgs e)
         {
             clProducto objProducto = new clProducto();
-            List<clProducto> ListaProducto = new List<clProducto>();
-
-            ListaProducto = objProducto.mtdListar();
-            dgvProducto.DataSource = ListaProducto;
+            
+            DataTable dtlistar = objProducto.mtdListar();
+            dgvProducto.DataSource = dtlistar;
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCodigo.Text==""||txtNombre.Text==""||txtPrecio.Text==""||txtCantidad.Text=="")
             {
+                MessageBox.Show("Debe completar la Informacion");
+            }
+            else
+            {
+                int codigo1 = int.Parse(txtCodigo.Text);
                 clProducto objProducto = new clProducto();
-
-                List<clProducto> ListaProducto = new List<clProducto>();
-
-                ListaProducto = objProducto.mtdListar();
-                dgvProducto.DataSource = ListaProducto;
-                        
-
                 objProducto.Codigo = int.Parse(txtCodigo.Text);
-                objProducto.Nombre = txtNombre.Text;
-                objProducto.Precio = int.Parse(txtPrecio.Text);
-                objProducto.Cantidad = int.Parse(txtCantidad.Text);
+                int codigovalid = objProducto.mtdValidar();
 
-                int can = objProducto.mtdRegistrar();
-
-                objProducto.mtdValidar();
-
-                int permitir = 0;
-
-                for (int i = 0; i < ListaProducto.Count; i++)
+                if (codigovalid==codigo1)
                 {
-                    if (ListaProducto[i].Codigo == int.Parse(txtCodigo.Text))
+                    int cantidad = objProducto.mtdRegistrarExistent();
+                    int suma= cantidad + int.Parse(txtCantidad.Text);
+
+                    objProducto.Codigo = int.Parse(txtCodigo.Text);
+                    objProducto.Cantidad2 = suma;
+
+                    int retorno = objProducto.mtdRegsitrarExitentUpdate();
+
+                    if (retorno > 0)
                     {
-                        MessageBox.Show("Ya se encuentra registrado");
-                        permitir = 1;
-                    }
+                        MessageBox.Show("Registro Exitoso");
+                        txtCantidad.Clear();
+                        txtCodigo.Clear();
+                        txtNombre.Clear();
+                        txtPrecio.Clear();
 
-                }
-
-                if (permitir == 0)
-                {
-
-
-                    if (can > 0)
-                    {
-
-                        MessageBox.Show("Datos Registrados");
                         frmProducto_Load(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("Error de registro");
+                        MessageBox.Show("Error al Registrar");
                     }
-
                 }
 
+                else
+                {
+                    objProducto.Codigo = int.Parse(txtCodigo.Text);
+                    objProducto.Cantidad = int.Parse(txtCantidad.Text);
+                    objProducto.Precio = int.Parse(txtPrecio.Text);
+                    objProducto.Nombre = txtNombre.Text;
 
-                txtCodigo.Clear();
-                txtNombre.Clear();
-                txtPrecio.Clear();
-                txtCantidad.Clear();
-                txtCodigo.Focus();
+                    int returnregis = objProducto.mtdRegistrar();
+
+                    if (returnregis > 0)
+                    {
+                        MessageBox.Show("Registro Completado");
+                        txtCantidad.Clear();
+                        txtCodigo.Clear();
+                        txtNombre.Clear();
+                        txtPrecio.Clear();
+
+                        frmProducto_Load(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar");
+                    }
+                }                
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Debe completar todos los datos");
-
-            }
-
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -299,5 +299,11 @@ namespace ProyectoUprava.Vista
                 MessageBox.Show("Debe completar los datos");
             }
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
     }
 }
