@@ -18,39 +18,41 @@ namespace ProyectoUprava.Datos
         public int Precio { get; set; }
         public int NuevaCantidad { get; set; }
         public int idProducto { get; set; }
+        public int idHab { get; set; }
+        public int IdAsignacion { get; set; }
+        public string Estado { get; set; }
 
-        clConexion objConexion = new clConexion();
+
 
         public int mtdRegistrar()
         {
-
-            string consulta = "insert into Pedido(Cantidad,Total,FechaHora,IdProducto)" + "values( '" + Cantidad + "' , '" + Total + "','" + FechaHora + "','" + idProducto + "')";
+            clConexion objConexion = new clConexion();
+            string consulta = "insert into Pedido(Cantidad,Total,FechaHora,IdAsignacion,IdProducto)" + "values( '" + Cantidad + "' , '" + Total + "','" + FechaHora + "','"+IdAsignacion+"','" + idProducto + "')";
             int RegistrarPedido = objConexion.mtdConectado(consulta);
 
             return RegistrarPedido;
         }
 
 
-        public List<clPedido> mtdAsignar()
+        public int mtdAsignar()
         {
+          
             clConexion objConexion = new clConexion();
-            List<clPedido> ListaPedido = new List<clPedido>();
 
-            string consulta = "SELECT Documento,NumHabitacion FROM Asignacion inner join Cliente on Asignacion.IdCliente=Cliente.IdCliente inner join Habitacion on Asignacion.IdHabitacion=Habitacion.IdHabitacion WHERE NumHabitacion='" + NumHabitacion + "'";
+            string consulta = "SELECT IdHabiacion from Habitacion where NumHabitacion= '" + NumHabitacion + "'";
             DataTable dtAsignar = objConexion.mtdDesconectdo(consulta);
+
+            int idHabitacion = 0;
 
             for (int i = 0; i < dtAsignar.Rows.Count; i++)
             {
                 clPedido objPedido = new clPedido();
-
-                objPedido.Documento = dtAsignar.Rows[i]["Documento"].ToString();
-                objPedido.NumHabitacion = int.Parse(dtAsignar.Rows[i]["NumHabitacion"].ToString());
-
-
-                ListaPedido.Add(objPedido);
+               
+                idHabitacion = int.Parse(dtAsignar.Rows[i]["IdHabiacion"].ToString());
+                               
             }
 
-            return ListaPedido;
+            return idHabitacion;
 
         }
 
@@ -59,7 +61,7 @@ namespace ProyectoUprava.Datos
             clConexion objConexion = new clConexion();
             List<clPedido> DatosProducto = new List<clPedido>();
 
-            string consultaP = "SELECT Precio,Cantidad From Producto WHERE Nombre='" + Producto + "'";
+            string consultaP = "SELECT Precio,Cantidad From Producto WHERE NombreP='" + Producto + "'";
             DataTable dtDatosProducto = objConexion.mtdDesconectdo(consultaP);
 
             for (int i = 0; i < dtDatosProducto.Rows.Count; i++)
@@ -78,9 +80,50 @@ namespace ProyectoUprava.Datos
 
         public int mtdActualizarProducto()
         {
-            string consulta = "update Producto set Cantidad='" + NuevaCantidad + "' where Nombre ='" + Producto + "'";
+            clConexion objConexion = new clConexion();
+            string consulta = "update Producto set Cantidad='" + NuevaCantidad + "' where NombreP ='" + Producto + "'";
             int update = objConexion.mtdConectado(consulta);
             return update;
+        }
+
+        public int mtdIdAsignacion()
+        {
+            clConexion objConexion = new clConexion();
+            string consulta = "SELECT IdAsignacion FROM Asignacion WHERE IdHabitacion ='"+idHab+"'";
+            DataTable dtIdAsignacion = objConexion.mtdDesconectdo(consulta);
+
+            int IdAsignacion = 0;
+
+            for (int i = 0; i < dtIdAsignacion.Rows.Count; i++)
+            {
+                clPedido objPedido = new clPedido();
+
+                IdAsignacion = int.Parse(dtIdAsignacion.Rows[i]["IdAsignacion"].ToString());
+            }
+
+            return IdAsignacion;
+        }
+
+        public string mtdEstado()
+        {
+
+            clConexion objConexion = new clConexion();
+
+            string consulta = "SELECT EstadoDisponibilidad from Habitacion where NumHabitacion= '" + NumHabitacion + "'";
+            DataTable dtEstado = objConexion.mtdDesconectdo(consulta);
+
+            string Estado = "";
+
+            for (int i = 0; i < dtEstado.Rows.Count; i++)
+            {
+                clPedido objPedido = new clPedido();
+
+                Estado = dtEstado.Rows[i]["EstadoDisponibilidad"].ToString();
+
+            }
+
+            return Estado;
+
         }
 
     }

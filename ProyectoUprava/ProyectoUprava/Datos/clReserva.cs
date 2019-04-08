@@ -22,12 +22,12 @@ namespace ProyectoUprava.Datos
         public int IdCliente { get; set; }
 
         List<clReserva> ListaEstado = new List<clReserva>();
-        List<clReserva> ListaEstadoReser = new List<clReserva>();
+        List<clReserva> valReser = new List<clReserva>();
 
         public DataTable mtdListarReservas()
         {
             clConexion objConexion = new clConexion();
-            string consulta = "SELECT Documento,Nombre,Apellido,Celular,NumHabitacion,FechaLlegada,FechaSalida,EstadoReserva,Observaciones FROM Cliente INNIER JOIN Asignacion ON (Asignacion.IdCliente=Cliente.IdCliente) INNER JOIN Habitacion ON (Habitacion.IdHabiacion=Asignacion.IdHabitacion)";
+            string consulta = "SELECT Documento,Nombre,Apellido,Celular,EstadoReserva,FechaLlegada,FechaSalida,NumHabitacion,Tipo,Precio FROM Cliente INNER JOIN Asignacion ON (Asignacion.IdCliente=Cliente.IdCliente) INNER JOIN Habitacion on (Habitacion.IdHabiacion=Asignacion.IdHabitacion) WHERE EstadoReserva='" + EstadoReserva + "'";
             DataTable dtReservas = objConexion.mtdDesconectdo(consulta);
 
             return dtReservas;
@@ -125,26 +125,22 @@ namespace ProyectoUprava.Datos
             return ListaHabitacion;
         }
 
-        public List<clReserva> mtdSacarEstado()
+        public string mtdSacarEstado()
         {
             clConexion objConexion = new clConexion();
-            string consulta = "SELECT IdHabitacion,EstadoReserva FROM Asignacion";
+            string consulta = "SELECT EstadoReserva FROM Asignacion WHERE IdHabitacion ='"+IdHabitadcion+"'";
             DataTable dtEstados = objConexion.mtdDesconectdo(consulta);
 
-            //string estado = "";
+            string estado = "";
 
             for (int i = 0; i < dtEstados.Rows.Count; i++)
             {
                 clReserva objReserva = new clReserva();
 
-                objReserva.IdEstadoReser = int.Parse(dtEstados.Rows[i]["IdHabitacion"].ToString());
-                objReserva.EstadoReserva = dtEstados.Rows[i]["EstadoReserva"].ToString();
-
-                ListaEstadoReser.Add(objReserva);
+                estado = dtEstados.Rows[i]["EstadoReserva"].ToString();
             }
 
-            return ListaEstadoReser;
-
+            return estado;
         }
 
         public int mtdDarSrlida()
@@ -187,6 +183,27 @@ namespace ProyectoUprava.Datos
             }
 
             return IdCliente1;
+        }
+
+        public List<clReserva> mtdValidarReservas()
+        {
+            clConexion objConexion = new clConexion();
+            string consulta = "SELECT EstadoReserva,FechaLlegada FROM Asignacion WHERE IdCliente='" + IdCliente + "'";
+            DataTable dtValRes = objConexion.mtdDesconectdo(consulta);
+
+            valReser.Clear();
+
+            for (int i = 0; i < dtValRes.Rows.Count; i++)
+            {
+                clReserva objReserva = new clReserva();
+
+                objReserva.EstadoReserva= dtValRes.Rows[i]["EstadoReserva"].ToString();
+                objReserva.FechaLLegada = dtValRes.Rows[i]["FechaLlegada"].ToString();
+
+                valReser.Add(objReserva);
+            }
+
+            return valReser;
         }
     }
 }

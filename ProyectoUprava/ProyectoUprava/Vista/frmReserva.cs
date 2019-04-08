@@ -22,9 +22,9 @@ namespace ProyectoUprava.Vista
         {
             clReserva objReserva = new clReserva();
             List<clReserva> ListaHabitacion = new List<clReserva>();
-            List<clReserva> ListaEstadoReser = new List<clReserva>();
+            //List<clReserva> ListaEstadoReser = new List<clReserva>();
             ListaHabitacion = objReserva.mtdListarHabitacion();
-            ListaEstadoReser = objReserva.mtdSacarEstado();
+            //ListaEstadoReser = objReserva.mtdSacarEstado();
 
             //codigo sena
 

@@ -1,4 +1,5 @@
 ﻿using ProyectoUprava.Datos;
+using ProyectoUprava.Vista.Listados;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,8 @@ namespace ProyectoUprava.Vista
         {
             InitializeComponent();
         }
-               
+
+        List<clReserva> valReser = new List<clReserva>();
         int idHabitacion = 0;
         int Numhab = 0;
         string estado1 = "";
@@ -85,27 +87,64 @@ namespace ProyectoUprava.Vista
                     }
                     else if (rbtReservar.Checked == true)
                     {
-                        string estado = "Reservada";
-
                         objReserva.IdCliente = idCliente;
-                        objReserva.FechaLLegada = txtFechaLlegada.Text;
-                        objReserva.FechaSalida = txtFechaSalida.Text;
-                        objReserva.Observaciones = txtObservaciones.Text;
-                        objReserva.Estado = estado;
-                        objReserva.IdHabitadcion = idHabitacion;
-                        objReserva.NumHabitacion = Numhab;
+                        valReser = objReserva.mtdValidarReservas();
 
-                        int retorno = objReserva.mtdAsignarReserva();
+                        string fechallegada0 = "";
+                        string fechallegada1 = "";
 
-                        if (retorno > 0)
+                        fechallegada1 = txtFechaLlegada.Text+ ":00";
+
+                        for (int i = 0; i < valReser.Count; i++)
                         {
-                            MessageBox.Show("Reserva Exitosa");
-                            frmDatosReserva_Load(null, null);
+                            fechallegada0 = valReser[i].FechaLLegada;
                         }
-                        else
+
+                        Boolean a = false;
+
+                        for (int i = 0; i < valReser.Count; i++)
                         {
-                            MessageBox.Show("Error al Reservar");
+                            if (valReser[i].EstadoReserva=="Reservada ")
+                            {
+                                if (fechallegada0==fechallegada1)
+                                {
+                                    a = true;
+                                }
+                            }
+                            else
+                            {
+                                a = false;
+                            }
                         }
+
+                        if (a==true)
+                        {
+                            MessageBox.Show("Esta Habitacion se Encuentra Reservada para esa Fecha");
+                        }
+                        else if (a==false)
+                        {
+                            string estado = "Reservada";
+
+                            objReserva.IdCliente = idCliente;
+                            objReserva.FechaLLegada = txtFechaLlegada.Text;
+                            objReserva.FechaSalida = txtFechaSalida.Text;
+                            objReserva.Observaciones = txtObservaciones.Text;
+                            objReserva.Estado = estado;
+                            objReserva.IdHabitadcion = idHabitacion;
+                            objReserva.NumHabitacion = Numhab;
+
+                            int retorno = objReserva.mtdAsignarReserva();
+
+                            if (retorno > 0)
+                            {
+                                MessageBox.Show("Reserva Exitosa");
+                                frmDatosReserva_Load(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al Reservar");
+                            }
+                        }                       
                     }
                 }
             }
@@ -113,25 +152,25 @@ namespace ProyectoUprava.Vista
 
         private void frmDatosReserva_Load(object sender, EventArgs e)
         {
-            //clReserva objReserva = new clReserva();
+            clReserva objReserva = new clReserva();
 
-            //objReserva.IdHabitadcion = idHabitacion;
-            //string estdo = "";
-            //string estdo1 = "Reservada ";
-            //estdo = objReserva.mtdSacarEstado();
+            objReserva.IdHabitadcion = idHabitacion;
+            string estdo = "";
+            string estdo1 = "Reservada ";
+            estdo = objReserva.mtdSacarEstado();
 
-            //if (estdo == estdo1)
-            //{
-            //    string es1 = "Reservada";
-            //    lblEstado.Text = es1;
-            //    lblEstado.BackColor = Color.Red;
-            //}
-            //else if (estdo == "" || estdo == null)
-            //{
-            //    string es1 = "Sin Reservar";
-            //    lblEstado.Text = es1;
-            //    lblEstado.BackColor = Color.GreenYellow;
-            //}
+            if (estdo == estdo1)
+            {
+                string es1 = "Reservada";
+                lblEstado.Text = es1;
+                lblEstado.BackColor = Color.Red;
+            }
+            else if (estdo == "" || estdo == null|| estdo== "Cancelada ")
+            {
+                string es1 = "Sin Reservar";
+                lblEstado.Text = es1;
+                lblEstado.BackColor = Color.GreenYellow;
+            }
 
             rbtReservar.Checked = true;
             rbtOcCancel.Checked = true;
@@ -323,6 +362,12 @@ namespace ProyectoUprava.Vista
                 e.Handled = true;
                 MessageBox.Show("Digitar solo numeros");
             }
+        }
+
+        private void btnListarReser_Click(object sender, EventArgs e)
+        {
+            frmListarDatosReserva objDataReser = new frmListarDatosReserva();
+            objDataReser.ShowDialog();
         }
     }
 }

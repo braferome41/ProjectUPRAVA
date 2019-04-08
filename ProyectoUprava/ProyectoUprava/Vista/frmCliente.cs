@@ -243,8 +243,7 @@ namespace ProyectoUprava
         }
 
         private void btnListarAll_Click(object sender, EventArgs e)
-        {
-            
+        {            
             frmDatosCliente objDatosCliente = new frmDatosCliente();
             objDatosCliente.Show();
         }

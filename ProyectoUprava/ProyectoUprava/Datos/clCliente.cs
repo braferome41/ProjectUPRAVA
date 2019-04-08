@@ -104,5 +104,23 @@ namespace ProyectoUprava.Datos
 
             return verificarelimin;
         }
+        public int mtdCargarCliente()
+        {
+            clConexion objConexion = new clConexion();
+
+            string consulta = "SELECT IdCliente FROM Cliente where Documento='" + Documento + "'";
+            DataTable dtCliente = objConexion.mtdDesconectdo(consulta);
+
+            int IdCliente=0;
+
+            for (int i = 0; i < dtCliente.Rows.Count; i++)
+            {
+
+                clCliente objCliente = new clCliente();
+                IdCliente = Convert.ToInt32(dtCliente.Rows[i]["IdCliente"]);
+            }
+            return IdCliente;
+        }
+
     }
 }

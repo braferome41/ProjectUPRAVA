@@ -47,5 +47,20 @@ namespace ProyectoUprava.Vista
             objProducto.Show();
             
         }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPago objPago = new frmPago();
+            objPago.MdiParent = this;
+            objPago.Show();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPedido objPedido = new frmPedido();
+           
+            objPedido.Show();
+
+        }
     }
 }

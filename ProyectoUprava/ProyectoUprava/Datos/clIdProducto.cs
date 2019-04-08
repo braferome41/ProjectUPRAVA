@@ -12,7 +12,7 @@ namespace ProyectoUprava.Datos
         public DataTable mtdCarcarCombos()
         {
             clConexion objConexion = new clConexion();
-            string consulta = "SELECT IdProducto,Nombre FROM Producto";
+            string consulta = "SELECT IdProducto,NombreP FROM Producto";
             DataTable dtcombos = objConexion.mtdDesconectdo(consulta);
 
             return dtcombos;

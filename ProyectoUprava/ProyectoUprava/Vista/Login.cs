@@ -42,7 +42,7 @@ namespace ProyectoUprava.Vista
             {
                 objLogin.Documento = int.Parse(txtDocumento.Text);
                 objLogin.Contraseña = txtContraseña.Text;
-                string mensaje = "";
+                string mensaje = "";                
 
                 for (int i = 0; i < lista.Count; i++)
                 {
@@ -89,16 +89,14 @@ namespace ProyectoUprava.Vista
                     txtDocumento.Clear();
                     txtContraseña.Clear();
                     txtDocumento.Focus();
+                    MessageBox.Show("Usuario o Contraseña Incorrecta");
                 }
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Debe Digitar Datos");
-            }
-            
-
-            
+            }         
 
         }
 

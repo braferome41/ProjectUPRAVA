@@ -36,3 +36,5 @@ C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUpr
 C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.Listados.frmDatosEmpleado.resources
 C:\Users\rojas\source\repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmDatosReserva.resources
 C:\Users\rojas\source\repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmReserva.resources
+C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.Listados.frmListarDatosReserva.resources
+C:\Users\rojas\Source\Repos\braferome41\ProjectUprava\ProyectoUprava\ProyectoUprava\obj\Debug\ProyectoUprava.Vista.frmPago.resources

@@ -23,7 +23,7 @@ namespace ProyectoUprava.Datos
 
             DataTable dtProducto = new DataTable();
 
-            string consulta = "select Codigo,Cantidad,Precio,Nombre from Producto";
+            string consulta = "select Codigo,Cantidad,Precio,NombreP from Producto";
             dtProducto = objConexion.mtdDesconectdo(consulta);
             
             return dtProducto;
@@ -52,7 +52,7 @@ namespace ProyectoUprava.Datos
         public int mtdRegistrar()
         {
             clConexion objConexion = new clConexion();
-            string consulta = "insert into Producto(Codigo,Nombre,Precio,Cantidad)" +
+            string consulta = "insert into Producto(Codigo,NombreP,Precio,Cantidad)" +
                               "values( '" + Codigo + "' , '" + Nombre + "','" + Precio + "','" + Cantidad + "')";
             int canreg = objConexion.mtdConectado(consulta);
             return canreg;
@@ -61,7 +61,7 @@ namespace ProyectoUprava.Datos
         public int mtdActualizar()
         {
             clConexion objConexion = new clConexion();
-            string consulta = "update Producto set Codigo='" + Codigo + "',Nombre='" + Nombre + "',Precio='" + Precio + "',Cantidad='" + Cantidad + "' where Codigo =" + Codigo;
+            string consulta = "update Producto set Codigo='" + Codigo + "',NombreP='" + Nombre + "',Precio='" + Precio + "',Cantidad='" + Cantidad + "' where Codigo =" + Codigo;
             int canact = objConexion.mtdConectado(consulta);
             return canact;
         }

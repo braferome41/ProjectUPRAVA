@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvReservas = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatosReserva));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbtOcCancel = new System.Windows.Forms.RadioButton();
             this.rbtResCancel = new System.Windows.Forms.RadioButton();
@@ -58,38 +58,36 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblFechaSalida = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             this.gbxDarSalida.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvReservas
-            // 
-            this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservas.Location = new System.Drawing.Point(279, 374);
-            this.dgvReservas.Name = "dgvReservas";
-            this.dgvReservas.Size = new System.Drawing.Size(590, 46);
-            this.dgvReservas.TabIndex = 28;
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.rbtOcCancel);
             this.groupBox2.Controls.Add(this.rbtResCancel);
             this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtDoCancel);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(574, 72);
+            this.groupBox2.Location = new System.Drawing.Point(580, 279);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 215);
+            this.groupBox2.Size = new System.Drawing.Size(260, 199);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             // 
             // rbtOcCancel
             // 
             this.rbtOcCancel.AutoSize = true;
-            this.rbtOcCancel.Location = new System.Drawing.Point(83, 110);
+            this.rbtOcCancel.Location = new System.Drawing.Point(87, 97);
             this.rbtOcCancel.Name = "rbtOcCancel";
             this.rbtOcCancel.Size = new System.Drawing.Size(103, 24);
             this.rbtOcCancel.TabIndex = 16;
@@ -100,7 +98,7 @@
             // rbtResCancel
             // 
             this.rbtResCancel.AutoSize = true;
-            this.rbtResCancel.Location = new System.Drawing.Point(83, 136);
+            this.rbtResCancel.Location = new System.Drawing.Point(87, 123);
             this.rbtResCancel.Name = "rbtResCancel";
             this.rbtResCancel.Size = new System.Drawing.Size(86, 24);
             this.rbtResCancel.TabIndex = 15;
@@ -110,7 +108,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(83, 166);
+            this.btnCancel.Location = new System.Drawing.Point(87, 153);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 33);
             this.btnCancel.TabIndex = 13;
@@ -122,7 +120,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(68, 29);
+            this.label6.Location = new System.Drawing.Point(72, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 27);
             this.label6.TabIndex = 13;
@@ -130,7 +128,7 @@
             // 
             // txtDoCancel
             // 
-            this.txtDoCancel.Location = new System.Drawing.Point(54, 82);
+            this.txtDoCancel.Location = new System.Drawing.Point(58, 69);
             this.txtDoCancel.Name = "txtDoCancel";
             this.txtDoCancel.Size = new System.Drawing.Size(155, 26);
             this.txtDoCancel.TabIndex = 9;
@@ -139,7 +137,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(90, 59);
+            this.label7.Location = new System.Drawing.Point(94, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 20);
             this.label7.TabIndex = 8;
@@ -147,13 +145,14 @@
             // 
             // gbxDarSalida
             // 
+            this.gbxDarSalida.BackColor = System.Drawing.Color.White;
             this.gbxDarSalida.Controls.Add(this.btnSalida);
             this.gbxDarSalida.Controls.Add(this.label2);
             this.gbxDarSalida.Controls.Add(this.txtDocSalid);
             this.gbxDarSalida.Controls.Add(this.label1);
-            this.gbxDarSalida.Location = new System.Drawing.Point(327, 72);
+            this.gbxDarSalida.Location = new System.Drawing.Point(286, 279);
             this.gbxDarSalida.Name = "gbxDarSalida";
-            this.gbxDarSalida.Size = new System.Drawing.Size(241, 215);
+            this.gbxDarSalida.Size = new System.Drawing.Size(241, 199);
             this.gbxDarSalida.TabIndex = 26;
             this.gbxDarSalida.TabStop = false;
             // 
@@ -210,7 +209,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(490, 9);
+            this.lblEstado.Location = new System.Drawing.Point(497, 243);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(78, 26);
             this.lblEstado.TabIndex = 24;
@@ -218,7 +217,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(560, 322);
+            this.button1.Location = new System.Drawing.Point(579, 590);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(261, 38);
             this.button1.TabIndex = 23;
@@ -227,15 +226,17 @@
             // 
             // btnListarReser
             // 
-            this.btnListarReser.Location = new System.Drawing.Point(341, 325);
+            this.btnListarReser.Location = new System.Drawing.Point(310, 593);
             this.btnListarReser.Name = "btnListarReser";
             this.btnListarReser.Size = new System.Drawing.Size(170, 33);
             this.btnListarReser.TabIndex = 22;
             this.btnListarReser.Text = "Listar Reservas";
             this.btnListarReser.UseVisualStyleBackColor = true;
+            this.btnListarReser.Click += new System.EventHandler(this.btnListarReser_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.rbtOcupar);
             this.groupBox1.Controls.Add(this.rbtReservar);
             this.groupBox1.Controls.Add(this.label5);
@@ -248,16 +249,16 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblFechaSalida);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(43, 31);
+            this.groupBox1.Location = new System.Drawing.Point(24, 225);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 441);
+            this.groupBox1.Size = new System.Drawing.Size(208, 389);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
             // rbtOcupar
             // 
             this.rbtOcupar.AutoSize = true;
-            this.rbtOcupar.Location = new System.Drawing.Point(41, 67);
+            this.rbtOcupar.Location = new System.Drawing.Point(54, 65);
             this.rbtOcupar.Name = "rbtOcupar";
             this.rbtOcupar.Size = new System.Drawing.Size(79, 24);
             this.rbtOcupar.TabIndex = 12;
@@ -269,7 +270,7 @@
             // rbtReservar
             // 
             this.rbtReservar.AutoSize = true;
-            this.rbtReservar.Location = new System.Drawing.Point(41, 46);
+            this.rbtReservar.Location = new System.Drawing.Point(54, 44);
             this.rbtReservar.Name = "rbtReservar";
             this.rbtReservar.Size = new System.Drawing.Size(91, 24);
             this.rbtReservar.TabIndex = 11;
@@ -280,7 +281,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 166);
+            this.label5.Location = new System.Drawing.Point(39, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 20);
             this.label5.TabIndex = 10;
@@ -288,7 +289,7 @@
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(19, 189);
+            this.txtObservaciones.Location = new System.Drawing.Point(21, 167);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(155, 73);
@@ -296,7 +297,7 @@
             // 
             // btnAsignar
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(50, 386);
+            this.btnAsignar.Location = new System.Drawing.Point(54, 350);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(99, 33);
             this.btnAsignar.TabIndex = 8;
@@ -306,7 +307,7 @@
             // 
             // txtFechaSalida
             // 
-            this.txtFechaSalida.Location = new System.Drawing.Point(25, 343);
+            this.txtFechaSalida.Location = new System.Drawing.Point(27, 318);
             this.txtFechaSalida.Mask = "00/00/0000 00:00";
             this.txtFechaSalida.Name = "txtFechaSalida";
             this.txtFechaSalida.Size = new System.Drawing.Size(149, 26);
@@ -315,7 +316,7 @@
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(19, 135);
+            this.txtDocumento.Location = new System.Drawing.Point(27, 115);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(155, 26);
             this.txtDocumento.TabIndex = 7;
@@ -323,7 +324,7 @@
             // 
             // txtFechaLlegada
             // 
-            this.txtFechaLlegada.Location = new System.Drawing.Point(25, 291);
+            this.txtFechaLlegada.Location = new System.Drawing.Point(27, 266);
             this.txtFechaLlegada.Mask = "00/00/0000 00:00";
             this.txtFechaLlegada.Name = "txtFechaLlegada";
             this.txtFechaLlegada.Size = new System.Drawing.Size(149, 26);
@@ -333,7 +334,7 @@
             // lblFechaLlegada
             // 
             this.lblFechaLlegada.AutoSize = true;
-            this.lblFechaLlegada.Location = new System.Drawing.Point(37, 268);
+            this.lblFechaLlegada.Location = new System.Drawing.Point(39, 243);
             this.lblFechaLlegada.Name = "lblFechaLlegada";
             this.lblFechaLlegada.Size = new System.Drawing.Size(115, 20);
             this.lblFechaLlegada.TabIndex = 2;
@@ -342,7 +343,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 112);
+            this.label4.Location = new System.Drawing.Point(52, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 20);
             this.label4.TabIndex = 6;
@@ -351,7 +352,7 @@
             // lblFechaSalida
             // 
             this.lblFechaSalida.AutoSize = true;
-            this.lblFechaSalida.Location = new System.Drawing.Point(50, 320);
+            this.lblFechaSalida.Location = new System.Drawing.Point(52, 295);
             this.lblFechaSalida.Name = "lblFechaSalida";
             this.lblFechaSalida.Size = new System.Drawing.Size(102, 20);
             this.lblFechaSalida.TabIndex = 3;
@@ -361,19 +362,48 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 14);
+            this.label3.Location = new System.Drawing.Point(4, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 27);
             this.label3.TabIndex = 5;
             this.label3.Text = "Asignar Habitacion";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(302, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 55);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 53;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(397, 165);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(369, 55);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 55;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(923, 190);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 54;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmDatosReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(918, 513);
-            this.Controls.Add(this.dgvReservas);
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ClientSize = new System.Drawing.Size(918, 640);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbxDarSalida);
             this.Controls.Add(this.button2);
@@ -381,6 +411,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnListarReser);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -389,21 +422,21 @@
             this.Text = "frmDatosReserva";
             this.Load += new System.EventHandler(this.frmDatosReserva_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmDatosReserva_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.gbxDarSalida.ResumeLayout(false);
             this.gbxDarSalida.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvReservas;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbtOcCancel;
         private System.Windows.Forms.RadioButton rbtResCancel;
@@ -433,5 +466,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblFechaSalida;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
